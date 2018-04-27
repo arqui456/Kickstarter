@@ -1,0 +1,92 @@
+package main.java.com.abmf.kickstart.view;
+
+import java.util.Scanner;
+
+import main.java.com.abmf.kickstart.models.KickStarter;
+import main.java.com.abmf.kickstart.models.User;
+import main.java.com.abmf.kickstart.models.UserImplemented;
+import main.java.com.abmf.kickstart.services.AuthService;
+import main.java.com.abmf.kickstart.services.SessionService;
+
+public class KickStarterDeployer {
+	
+	private static KickStarterDeployer INSTANCE = null;
+	
+	public static KickStarter kickStarterInstance;
+	private Scanner scanner;
+	private AuthService authService;
+	private SessionService sessionService;
+	
+	private KickStarterDeployer() {
+		scanner = new Scanner(System.in);
+		kickStarterInstance = new KickStarter();
+		authService = new AuthService();
+		sessionService = new SessionService();
+	}
+	
+	public static KickStarterDeployer getInstance() {
+		if(INSTANCE == null)
+			INSTANCE = new KickStarterDeployer();
+		return INSTANCE;
+	}
+	
+	public void run() {
+		boolean shouldRun = true;
+		while(shouldRun) {
+			System.out.println("1. Sign In");
+			System.out.println("2. Sign Up");
+			System.out.println("3. Get out");
+			System.out.println("4. SHOW STATE");
+			System.out.print(">>> ");
+			
+			switch(Integer.parseInt(scanner.nextLine())) {
+				case 1:
+					signIn();
+					break;
+				case 2:
+					signUp();
+					break;
+				case 3:
+					shouldRun = false;
+					break;
+				case 4:
+					break;
+			}
+		}
+		scanner.close();
+	}
+	
+	private void signIn() {
+		System.out.print("Type your login: ");
+		String login = scanner.nextLine();
+		System.out.print("Type password: ");
+		String password = scanner.nextLine();
+		if(!login.equals("") && !password.equals("")) {
+			User user = authService.isThereAUser(login, password);
+			if(user != null)
+				sessionService.enterInLoggedSession(user);
+			else if(!authService.isLoginAlreadyUsed(login))
+				System.out.println("User not found");
+			else 
+				System.out.println("Invalid login params.");
+		}
+	}
+	
+	private void signUp() {
+		System.out.print("Type your login: ");
+		String login = scanner.nextLine();
+		if(!authService.isLoginAlreadyUsed(login)) {
+			System.out.print("Type password: ");
+			String password = scanner.nextLine();
+			System.out.print("Type your name: ");
+			String name = scanner.nextLine();
+			User user = new UserImplemented(name, login, password);
+			kickStarterInstance.addUser(user);
+			System.out.println(String.format("Welcome, %s!", user.getName()));
+			sessionService.enterInLoggedSession(user);
+		} else {
+			System.out.println("Login already in use.");
+		}
+	}
+	
+}
