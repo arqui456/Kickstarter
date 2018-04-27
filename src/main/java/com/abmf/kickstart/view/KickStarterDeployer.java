@@ -7,6 +7,7 @@ import main.java.com.abmf.kickstart.models.User;
 import main.java.com.abmf.kickstart.models.UserImplemented;
 import main.java.com.abmf.kickstart.services.AuthService;
 import main.java.com.abmf.kickstart.services.SessionService;
+import main.java.com.abmf.kickstart.utils.InputReader;
 
 public class KickStarterDeployer {
 	
@@ -36,10 +37,17 @@ public class KickStarterDeployer {
 			System.out.println("1. Sign In");
 			System.out.println("2. Sign Up");
 			System.out.println("3. Get out");
-			System.out.println("4. SHOW STATE");
-			System.out.print(">>> ");
+			System.out.println(">>> ");
+					
+			int input = -1;
+			String entry = scanner.nextLine();
+			try {
+				input = Integer.parseInt(entry);
+			} catch(Exception e) {
+				input = -1;
+			}
 			
-			switch(Integer.parseInt(scanner.nextLine())) {
+			switch(input) {
 				case 1:
 					signIn();
 					break;
@@ -49,7 +57,7 @@ public class KickStarterDeployer {
 				case 3:
 					shouldRun = false;
 					break;
-				case 4:
+				default:
 					break;
 			}
 		}
