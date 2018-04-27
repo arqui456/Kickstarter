@@ -1,6 +1,6 @@
 package main.java.com.abmf.kickstart.models;
 
-public abstract class User {
+public abstract class User implements Supporter {
 	
 	protected String name;
 	protected String email;
@@ -8,7 +8,12 @@ public abstract class User {
 	protected BankAccount bankAccount;
 	protected String biography;
 	protected String country;
+	protected CreditCard creditCard;
 	
+	public abstract CreditCard getCreditCard();
+
+	public abstract void setCreditCard(CreditCard creditCard);
+
 	public abstract String getName();
 	
 	public abstract void setName(String name);

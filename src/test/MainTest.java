@@ -6,6 +6,7 @@ import main.java.com.abmf.kickstart.models.BankAccountNull;
 import main.java.com.abmf.kickstart.models.Comment;
 import main.java.com.abmf.kickstart.models.CommentImplemented;
 import main.java.com.abmf.kickstart.models.CommentNull;
+import main.java.com.abmf.kickstart.models.CreditCard;
 import main.java.com.abmf.kickstart.models.Reward;
 import main.java.com.abmf.kickstart.models.RewardImplemented;
 import main.java.com.abmf.kickstart.models.RewardNull;
@@ -38,5 +39,10 @@ public class MainTest {
 		bank = new BankAccountImplemented("Bradesco", "Aurelio", 505, "MIMACHER");
 		System.out.println(bank);
 		
+		CreditCard card = new CreditCard.Builder().withCardNumber("0001111322022")
+												  .withCardHolder("Aurelio B Miranda")
+												  .withExpirationDate("21/21")
+												  .withSecurityCode("505")
+												  .build();
 	}
 }
