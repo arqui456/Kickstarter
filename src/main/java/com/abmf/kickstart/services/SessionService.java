@@ -19,6 +19,7 @@ public class SessionService {
 	private void runSessionUI() {
 		boolean shouldStayLogged = true;
 		while(shouldStayLogged) {
+			System.out.println(String.format("Hello, %s", user.getName()));
 			System.out.println("1. Edit profile");
 			System.out.println("2. See profile state");
 			System.out.println("4. Erase account");
@@ -35,6 +36,12 @@ public class SessionService {
 			}
 			
 			switch(input) {
+				case 1:
+					editProfile();
+					break;
+				case 2:
+					seeProfileState();
+					break;
 				case 9:
 					shouldStayLogged = false;
 					break;
@@ -43,5 +50,51 @@ public class SessionService {
 			}
 			
 		}
+	}
+	
+	private void editProfile() {
+		boolean stayEditing = true;
+		while(stayEditing) {
+			System.out.println("1. Edit name");
+			System.out.println("2. Edit password");
+			System.out.println("3. Edit biography");
+			System.out.println("4. Change contry");
+			System.out.println("5. Edit credit card");
+			System.out.println("6. Save changes");
+			
+			switch(Integer.parseInt(scanner.nextLine())) {
+				case 1:	
+					System.out.print("Type new name: ");
+					user.setName(scanner.nextLine());
+					break;
+				case 2:
+					System.out.print("Type new password: ");
+					user.setPassword(scanner.nextLine());
+					break;
+				case 3:
+					System.out.print("Type profile biography: ");
+					user.setBiography(scanner.nextLine());
+					break;
+				case 4:
+					System.out.print("Type country: ");
+					user.setCountry(scanner.nextLine());
+					break;
+				case 5:
+					editCreditCardHandler();
+					break;
+				case 6:
+					stayEditing = false;
+					break;
+			}
+		}
+		
+	}
+	
+	private void editCreditCardHandler() {
+		
+	}
+	
+	private void seeProfileState() {
+		
 	}
 }
