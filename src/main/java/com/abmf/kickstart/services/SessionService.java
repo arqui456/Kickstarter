@@ -95,6 +95,17 @@ public class SessionService implements Service {
 	}
 	
 	private void seeProfileState() {
+		System.out.println(getUserDescription(user));
+	}
+	
+	private String getUserDescription(User user) {
+		StringBuilder builder = new StringBuilder();
+		builder.append(String.format("Name: %s", user.getName()));
+		builder.append(String.format("\nEmail: %s", user.getEmail()));
+		builder.append(String.format("\nPassword: %s", user.getPassword()));
+		builder.append(String.format("\nBiography: %s", user.getBiography()));
+		builder.append(String.format("\nCountry: %s", user.getCountry()));
+		return builder.toString();
 		
 	}
 }

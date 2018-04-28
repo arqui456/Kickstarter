@@ -1,6 +1,5 @@
 package main.java.com.abmf.kickstart.view;
 
-import java.security.Provider.Service;
 import java.util.Scanner;
 
 import main.java.com.abmf.kickstart.models.kickstarter.KickStarter;
@@ -10,7 +9,6 @@ import main.java.com.abmf.kickstart.services.AuthService;
 import main.java.com.abmf.kickstart.services.ServiceFactory;
 import main.java.com.abmf.kickstart.services.ServiceType;
 import main.java.com.abmf.kickstart.services.SessionService;
-import main.java.com.abmf.kickstart.utils.InputReader;
 
 public class KickStarterDeployer {
 	
