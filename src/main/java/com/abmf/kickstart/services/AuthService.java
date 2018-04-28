@@ -1,9 +1,9 @@
 package main.java.com.abmf.kickstart.services;
 
-import main.java.com.abmf.kickstart.models.User;
+import main.java.com.abmf.kickstart.models.user.User;
 import main.java.com.abmf.kickstart.view.KickStarterDeployer;
 
-public class AuthService {
+public class AuthService implements Service {
 	
 	public AuthService() {
 		

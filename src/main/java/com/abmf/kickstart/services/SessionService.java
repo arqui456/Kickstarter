@@ -2,9 +2,9 @@ package main.java.com.abmf.kickstart.services;
 
 import java.util.Scanner;
 
-import main.java.com.abmf.kickstart.models.User;
+import main.java.com.abmf.kickstart.models.user.User;
 
-public class SessionService {
+public class SessionService implements Service {
 
 	private User user;
 	private Scanner scanner;
