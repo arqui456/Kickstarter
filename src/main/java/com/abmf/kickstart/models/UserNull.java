@@ -65,4 +65,27 @@ public class UserNull extends User {
 				+ bankAccount + ", biography=" + biography + ", country=" + country + "]";
 	}
 
+	@Override
+	public String getSupporterName() {
+		return "";
+	}
+
+	@Override
+	public double getDonationValue() {
+		return 0;
+	}
+
+	@Override
+	public void setDonationValue(double donationValue) {
+	}
+
+	@Override
+	public CreditCard getCreditCard() {
+		return null;
+	}
+
+	@Override
+	public void setCreditCard(CreditCard creditCard) {		
+	}
+
 }
