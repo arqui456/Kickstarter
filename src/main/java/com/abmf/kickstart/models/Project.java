@@ -13,7 +13,7 @@ public class Project {
 	private double desiredMoney;
 	private List<Comment> comments;
 	private List<Reward> rewards;
-	private List<Suporter> contribuitors;
+	private List<Supporter> contribuitors;
 	private double currentMoney;
 	
 	public Project() {
