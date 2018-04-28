@@ -12,7 +12,7 @@ public class UserImplemented extends User {
 		name = "";
 		email = "";
 		password = "";
-		bankAccount = new BankAccountImplemented();
+		bankAccount = null;
 		biography = "";
 		country = "";
 	}
