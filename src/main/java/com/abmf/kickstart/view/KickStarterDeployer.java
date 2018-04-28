@@ -1,11 +1,14 @@
 package main.java.com.abmf.kickstart.view;
 
+import java.security.Provider.Service;
 import java.util.Scanner;
 
 import main.java.com.abmf.kickstart.models.kickstarter.KickStarter;
 import main.java.com.abmf.kickstart.models.user.User;
 import main.java.com.abmf.kickstart.models.user.UserImplemented;
 import main.java.com.abmf.kickstart.services.AuthService;
+import main.java.com.abmf.kickstart.services.ServiceFactory;
+import main.java.com.abmf.kickstart.services.ServiceType;
 import main.java.com.abmf.kickstart.services.SessionService;
 import main.java.com.abmf.kickstart.utils.InputReader;
 
@@ -21,8 +24,11 @@ public class KickStarterDeployer {
 	private KickStarterDeployer() {
 		scanner = new Scanner(System.in);
 		kickStarterInstance = new KickStarter();
-		authService = new AuthService();
-		sessionService = new SessionService();
+		authService = (AuthService) ServiceFactory.getInstance()
+				.getService(ServiceType.AUTH);
+		
+		sessionService = (SessionService) ServiceFactory.getInstance()
+				.getService(ServiceType.SESSION);
 	}
 	
 	public static KickStarterDeployer getInstance() {
