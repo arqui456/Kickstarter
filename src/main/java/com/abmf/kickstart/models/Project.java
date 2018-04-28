@@ -12,7 +12,6 @@ public class Project {
 	private long duration;	
 	private double desiredMoney;
 	private List<Comment> comments;
-	private List<Reward> rewards;
 	private List<Supporter> contribuitors;
 	private double currentMoney;
 	
@@ -24,7 +23,6 @@ public class Project {
 		desiredMoney = 0;
 		currentMoney = 0;
 		comments = new ArrayList<>();
-		rewards = new ArrayList<>();
 		contribuitors = new ArrayList<>();
 	}
 	
@@ -90,23 +88,23 @@ public class Project {
 		return comments;
 	}
 
+	public void addComment(Comment commnet) {
+		this.comments.add(commnet);
+	}
+	
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
 
-	public List<Reward> getRewards() {
-		return rewards;
-	}
-
-	public void setRewards(List<Reward> rewards) {
-		this.rewards = rewards;
-	}
-
-	public List<User> getContribuitors() {
+	public List<Supporter> getContribuitors() {
 		return contribuitors;
 	}
 
-	public void setContribuitors(List<User> contribuitors) {
+	public void addSupporter(Supporter suporter) {
+		this.contribuitors.add(suporter);
+	}
+	
+	public void setContribuitors(List<Supporter> contribuitors) {
 		this.contribuitors = contribuitors;
 	}
 
@@ -122,7 +120,7 @@ public class Project {
 	public String toString() {
 		return "Project [title=" + title + ", category=" + category + ", description=" + description + ", projectOwner="
 				+ projectOwner + ", duration=" + duration + ", desiredMoney=" + desiredMoney + ", comments=" + comments
-				+ ", rewards=" + rewards + ", contribuitors=" + contribuitors + ", currentMoney=" + currentMoney + "]";
+				+ ", contribuitors=" + contribuitors + ", currentMoney=" + currentMoney + "]";
 	}
 	
 }
