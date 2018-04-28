@@ -2,9 +2,9 @@ package main.java.com.abmf.kickstart.view;
 
 import java.util.Scanner;
 
-import main.java.com.abmf.kickstart.models.KickStarter;
-import main.java.com.abmf.kickstart.models.User;
-import main.java.com.abmf.kickstart.models.UserImplemented;
+import main.java.com.abmf.kickstart.models.kickstarter.KickStarter;
+import main.java.com.abmf.kickstart.models.user.User;
+import main.java.com.abmf.kickstart.models.user.UserImplemented;
 import main.java.com.abmf.kickstart.services.AuthService;
 import main.java.com.abmf.kickstart.services.SessionService;
 import main.java.com.abmf.kickstart.utils.InputReader;

@@ -1,18 +1,18 @@
 package test;
 
-import main.java.com.abmf.kickstart.models.BankAccount;
-import main.java.com.abmf.kickstart.models.BankAccountImplemented;
-import main.java.com.abmf.kickstart.models.BankAccountNull;
-import main.java.com.abmf.kickstart.models.Comment;
-import main.java.com.abmf.kickstart.models.CommentImplemented;
-import main.java.com.abmf.kickstart.models.CommentNull;
-import main.java.com.abmf.kickstart.models.CreditCard;
-import main.java.com.abmf.kickstart.models.Reward;
-import main.java.com.abmf.kickstart.models.RewardImplemented;
-import main.java.com.abmf.kickstart.models.RewardNull;
-import main.java.com.abmf.kickstart.models.User;
-import main.java.com.abmf.kickstart.models.UserImplemented;
-import main.java.com.abmf.kickstart.models.UserNull;
+import main.java.com.abmf.kickstart.models.bankaccount.BankAccount;
+import main.java.com.abmf.kickstart.models.bankaccount.BankAccountImplemented;
+import main.java.com.abmf.kickstart.models.bankaccount.BankAccountNull;
+import main.java.com.abmf.kickstart.models.comment.Comment;
+import main.java.com.abmf.kickstart.models.comment.CommentImplemented;
+import main.java.com.abmf.kickstart.models.comment.CommentNull;
+import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
+import main.java.com.abmf.kickstart.models.reward.Reward;
+import main.java.com.abmf.kickstart.models.reward.RewardImplemented;
+import main.java.com.abmf.kickstart.models.reward.RewardNull;
+import main.java.com.abmf.kickstart.models.user.User;
+import main.java.com.abmf.kickstart.models.user.UserImplemented;
+import main.java.com.abmf.kickstart.models.user.UserNull;
 
 public class MainTest {
 
