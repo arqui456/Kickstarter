@@ -60,7 +60,7 @@ public class SessionService implements Service {
 			System.out.println("2. Edit password");
 			System.out.println("3. Edit biography");
 			System.out.println("4. Change contry");
-			System.out.println("5. See credit card");
+			System.out.println("5. Credit card");
 			System.out.println("6. Save changes");
 			
 			switch(Integer.parseInt(scanner.nextLine())) {
@@ -92,11 +92,31 @@ public class SessionService implements Service {
 	}
 	
 	private void seeCreditCardHandler() {
-		CreditCard creditCard = user.getCreditCard();
-		if(creditCard != null)
-			System.out.println(getCreditCardState(creditCard));
-		else 
-			System.out.println("User has no credit card associated.");
+		boolean isEditing = true;
+		while(isEditing) {
+			System.out.println("1. See credit card");
+			System.out.println("2. Add credit card");
+			System.out.println("3. Save changes");
+			
+			int input = -1;
+			try {
+				input = Integer.parseInt(scanner.nextLine());
+			} catch(Exception e) {
+				input = -1;
+			}
+			
+			switch(input) {
+				case 1: 
+					System.out.println(getCreditCardState(user.getCreditCard()));
+					break;
+				case 2:
+					addCreditCardHandler();
+					break;
+				case 3:
+					isEditing = false;
+					break;		
+			}
+		}
 	}
 	
 	private void seeProfileState() {
@@ -114,12 +134,43 @@ public class SessionService implements Service {
 		
 	}
 	
+	private void addCreditCardHandler() {
+		if(user.getCreditCard() == null) {
+			boolean isGettingCardData = true;
+			while(isGettingCardData) {
+				System.out.print("Type card holder: ");
+				String name = scanner.nextLine();
+				System.out.print("Type card number: ");
+				String cardNumber = scanner.nextLine();
+				System.out.print("Type expiration date (mm/yy): ");
+				String expirationDate = scanner.nextLine();
+				System.out.print("Type secury code: ");
+				String securyCode = scanner.nextLine();
+				
+				CreditCard card = new CreditCard.Builder()
+												.withCardHolder(name)
+												.withCardNumber(cardNumber)
+												.withExpirationDate(expirationDate)
+												.withSecurityCode(securyCode)
+												.build();
+				user.setCreditCard(card);
+				isGettingCardData = false;
+			}
+		} else {
+			System.out.println("User already has a credit card associated");
+		}
+	}
+	
 	private String getCreditCardState(CreditCard creditCard) {
-		StringBuilder builder = new StringBuilder();
-		builder.append(String.format("Card holder: %s", creditCard.getCardHolder()));
-		builder.append(String.format("\nCard number: %s", creditCard.getCardNumber()));
-		builder.append(String.format("\nExpiration Date: %s", creditCard.getExpirationDate()));
-		builder.append(String.format("\nSecurity code: %s", creditCard.getSecurityCode()));
-		return builder.toString();
+		String toReturn = "User has no credit card associated.";
+		if(creditCard != null) {
+			StringBuilder builder = new StringBuilder();
+			builder.append(String.format("Card holder: %s", creditCard.getCardHolder()));
+			builder.append(String.format("\nCard number: %s", creditCard.getCardNumber()));
+			builder.append(String.format("\nExpiration Date: %s", creditCard.getExpirationDate()));
+			builder.append(String.format("\nSecurity code: %s", creditCard.getSecurityCode()));
+			toReturn = builder.toString();
+		} 
+		return toReturn;
 	}
 }
