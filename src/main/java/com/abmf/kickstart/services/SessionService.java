@@ -2,6 +2,7 @@ package main.java.com.abmf.kickstart.services;
 
 import java.util.Scanner;
 
+import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
 import main.java.com.abmf.kickstart.models.user.User;
 
 public class SessionService implements Service {
@@ -59,7 +60,7 @@ public class SessionService implements Service {
 			System.out.println("2. Edit password");
 			System.out.println("3. Edit biography");
 			System.out.println("4. Change contry");
-			System.out.println("5. Edit credit card");
+			System.out.println("5. See credit card");
 			System.out.println("6. Save changes");
 			
 			switch(Integer.parseInt(scanner.nextLine())) {
@@ -80,7 +81,7 @@ public class SessionService implements Service {
 					user.setCountry(scanner.nextLine());
 					break;
 				case 5:
-					editCreditCardHandler();
+					seeCreditCardHandler();
 					break;
 				case 6:
 					stayEditing = false;
@@ -90,8 +91,12 @@ public class SessionService implements Service {
 		
 	}
 	
-	private void editCreditCardHandler() {
-		
+	private void seeCreditCardHandler() {
+		CreditCard creditCard = user.getCreditCard();
+		if(creditCard != null)
+			System.out.println(getCreditCardState(creditCard));
+		else 
+			System.out.println("User has no credit card associated.");
 	}
 	
 	private void seeProfileState() {
@@ -107,5 +112,14 @@ public class SessionService implements Service {
 		builder.append(String.format("\nCountry: %s", user.getCountry()));
 		return builder.toString();
 		
+	}
+	
+	private String getCreditCardState(CreditCard creditCard) {
+		StringBuilder builder = new StringBuilder();
+		builder.append(String.format("Card holder: %s", creditCard.getCardHolder()));
+		builder.append(String.format("\nCard number: %s", creditCard.getCardNumber()));
+		builder.append(String.format("\nExpiration Date: %s", creditCard.getExpirationDate()));
+		builder.append(String.format("\nSecurity code: %s", creditCard.getSecurityCode()));
+		return builder.toString();
 	}
 }
