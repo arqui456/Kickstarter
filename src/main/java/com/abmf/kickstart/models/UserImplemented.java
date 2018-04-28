@@ -1,6 +1,8 @@
 package main.java.com.abmf.kickstart.models;
 
 public class UserImplemented extends User {
+	
+	private double donationValue;
 
 	public UserImplemented() {
 		name = "";
@@ -86,12 +88,37 @@ public class UserImplemented extends User {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+	
+	@Override
+	public String getSupporterName() {
+		return this.getName();
+	}
+
+	@Override
+	public void setDonationValue(double donationValue) {
+		this.donationValue = donationValue;
+	}
+	
+	@Override
+	public double getDonationValue() {
+		return donationValue;
+	}
+
+	@Override
+	public CreditCard getCreditCard() {
+		return creditCard;
+	}
+
+	@Override
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
 
 	@Override
 	public String toString() {
-		return "UserImplemented [name=" + name + ", email=" + email + ", password=" + password + ", bankAccount="
-				+ bankAccount + ", biography=" + biography + ", country=" + country + "]";
+		return "UserImplemented [donationValue=" + donationValue + ", name=" + name + ", email=" + email + ", password="
+				+ password + ", bankAccount=" + bankAccount + ", biography=" + biography + ", country=" + country
+				+ ", creditCard=" + creditCard + "]";
 	}
 	
-
 }
