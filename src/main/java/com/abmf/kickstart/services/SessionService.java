@@ -2,8 +2,11 @@ package main.java.com.abmf.kickstart.services;
 
 import java.util.Scanner;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
 import main.java.com.abmf.kickstart.models.user.User;
+import main.java.com.abmf.kickstart.view.KickStarterDeployer;
 
 public class SessionService implements Service {
 
@@ -23,9 +26,9 @@ public class SessionService implements Service {
 			System.out.println(String.format("Hello, %s", user.getName()));
 			System.out.println("1. Edit profile");
 			System.out.println("2. See profile state");
-			System.out.println("4. Erase account");
-			System.out.println("5. My Projects");
-			System.out.println("6. See projects");
+			System.out.println("3. Erase account");
+			System.out.println("4. My Projects");
+			System.out.println("5. See projects");
 			System.out.println("9. Log out");
 			System.out.println(">>> ");
 			
@@ -43,6 +46,10 @@ public class SessionService implements Service {
 				case 2:
 					seeProfileState();
 					break;
+				case 3:
+					if(eraseAccount())
+						shouldStayLogged = false;
+					break;
 				case 9:
 					shouldStayLogged = false;
 					break;
@@ -51,6 +58,21 @@ public class SessionService implements Service {
 			}
 			
 		}
+	}
+	
+	private boolean eraseAccount() {
+		boolean isAccountFinished = false;
+		System.out.print("Are you sure you want to finish your account (s/n)? ");
+		String response = scanner.nextLine();
+		while(response.equals("") || !((response.equals("s")) || response.equals("n"))) {
+			System.out.print("Invalid input, type it again: ");
+			response = scanner.nextLine();
+		}
+		if(response.equals("s")) {
+			KickStarterDeployer.kickStarterInstance.removeUser(user);	
+			isAccountFinished = true;
+		} 
+		return isAccountFinished;
 	}
 	
 	private void editProfile() {
