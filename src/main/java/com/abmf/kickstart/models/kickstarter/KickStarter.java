@@ -1,9 +1,12 @@
-package main.java.com.abmf.kickstart.models;
+package main.java.com.abmf.kickstart.models.kickstarter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import main.java.com.abmf.kickstart.models.project.Project;
+import main.java.com.abmf.kickstart.models.user.User;
 
 public class KickStarter {
 

@@ -1,4 +1,8 @@
-package main.java.com.abmf.kickstart.models;
+package main.java.com.abmf.kickstart.models.user;
+
+import main.java.com.abmf.kickstart.models.bankaccount.BankAccount;
+import main.java.com.abmf.kickstart.models.bankaccount.BankAccountNull;
+import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
 
 public class UserNull extends User {
 	

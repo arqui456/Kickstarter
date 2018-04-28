@@ -1,4 +1,6 @@
-package main.java.com.abmf.kickstart.models;
+package main.java.com.abmf.kickstart.models.comment;
+
+import main.java.com.abmf.kickstart.models.user.User;
 
 public abstract class Comment {
 	

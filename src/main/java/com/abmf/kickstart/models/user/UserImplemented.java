@@ -1,4 +1,8 @@
-package main.java.com.abmf.kickstart.models;
+package main.java.com.abmf.kickstart.models.user;
+
+import main.java.com.abmf.kickstart.models.bankaccount.BankAccount;
+import main.java.com.abmf.kickstart.models.bankaccount.BankAccountImplemented;
+import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
 
 public class UserImplemented extends User {
 	

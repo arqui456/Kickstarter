@@ -1,4 +1,4 @@
-package main.java.com.abmf.kickstart.models;
+package main.java.com.abmf.kickstart.models.reward;
 
 public class RewardImplemented extends Reward {
 

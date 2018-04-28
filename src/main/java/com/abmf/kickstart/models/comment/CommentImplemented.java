@@ -1,4 +1,7 @@
-package main.java.com.abmf.kickstart.models;
+package main.java.com.abmf.kickstart.models.comment;
+
+import main.java.com.abmf.kickstart.models.user.User;
+import main.java.com.abmf.kickstart.models.user.UserImplemented;
 
 public class CommentImplemented extends Comment {
 
