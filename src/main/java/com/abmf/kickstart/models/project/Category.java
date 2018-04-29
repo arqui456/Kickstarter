@@ -1,4 +1,4 @@
-package main.java.com.abmf.kickstart.models.categories;
+package main.java.com.abmf.kickstart.models.project;
 
 public enum Category {
 	ART,

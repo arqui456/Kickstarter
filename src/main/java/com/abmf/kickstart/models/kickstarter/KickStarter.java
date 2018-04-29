@@ -48,7 +48,7 @@ public class KickStarter {
 		projects.put(project.getTitle(), project);
 	}
 	
-	public List<Project> getProjects() {
+	public ArrayList<Project> getProjects() {
 		return new ArrayList<Project>(projects.values());
 	}
 	

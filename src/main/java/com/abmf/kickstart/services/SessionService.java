@@ -1,10 +1,11 @@
 package main.java.com.abmf.kickstart.services;
 
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
+import main.java.com.abmf.kickstart.models.project.Project;
 import main.java.com.abmf.kickstart.models.user.User;
 import main.java.com.abmf.kickstart.view.KickStarterDeployer;
 
@@ -12,10 +13,13 @@ public class SessionService implements Service {
 
 	private User user;
 	private Scanner scanner;
+	private ProjectsDiscoverService discoverService;
 	
 	public void enterInLoggedSession(User user) {
 		this.user = user;
 		scanner = new Scanner(System.in);
+		discoverService = (ProjectsDiscoverService) ServiceFactory.getInstance()
+						.getService(ServiceType.PROJECT_DISCOVER);
 		runSessionUI();
 		//scanner.close();
 	}
@@ -50,6 +54,12 @@ public class SessionService implements Service {
 					if(eraseAccount())
 						shouldStayLogged = false;
 					break;
+				case 4:
+					myProjectsHandler();
+					break;
+				case 5:
+					projectsHandler();
+					break;
 				case 9:
 					shouldStayLogged = false;
 					break;
@@ -58,6 +68,64 @@ public class SessionService implements Service {
 			}
 			
 		}
+	}
+	
+	private void projectsHandler() {
+		boolean isOnProjects = true;
+		while(isOnProjects) {
+			System.out.println("Type one option:");
+			System.out.println("1. See all projects");
+			System.out.println("2. See project with filter");
+			System.out.println("3. Get back");
+			
+			int input = -1;
+			try {
+				input = Integer.parseInt(scanner.nextLine());
+			} catch(Exception e) {
+				input = -1;
+			}
+			
+			switch(input) {
+				case 1:
+					showAllProjectsHandler();
+					break;
+				case 3:
+					isOnProjects = false;
+					break;
+			}
+		}
+	}
+	
+	private void showAllProjectsHandler() {
+		if(discoverService.getAllProjects().size() > 0) {
+			System.out.println("Type project id to see more: ");
+			int id = 0;
+			for(Project project : discoverService.getAllProjects())
+				System.out.println(projectStringModal(project, id++));
+			
+			System.out.print(">>>");
+			int input = -1;
+			try {
+				input = Integer.parseInt(scanner.nextLine());
+			} catch(Exception e) {
+				input = -1;
+			}
+			
+			
+			
+		} else {
+			System.out.println("There are no projects publishied yet.");
+		}
+		
+	}
+	
+	private String projectStringModal(Project project, int id) {
+		StringBuilder builder = new StringBuilder();
+		return builder.toString();
+	}
+	
+	private void myProjectsHandler() {
+		
 	}
 	
 	private boolean eraseAccount() {
@@ -195,4 +263,5 @@ public class SessionService implements Service {
 		} 
 		return toReturn;
 	}
+	
 }

@@ -3,7 +3,6 @@ package main.java.com.abmf.kickstart.models.project;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.com.abmf.kickstart.models.categories.Category;
 import main.java.com.abmf.kickstart.models.comment.Comment;
 import main.java.com.abmf.kickstart.models.user.Supporter;
 import main.java.com.abmf.kickstart.models.user.User;

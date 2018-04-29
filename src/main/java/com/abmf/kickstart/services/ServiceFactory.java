@@ -17,6 +17,8 @@ public class ServiceFactory {
 			return new AuthService();
 		if(serviceType == ServiceType.SESSION)
 			return new SessionService();
+		if(serviceType == ServiceType.PROJECT_DISCOVER)
+			return new ProjectsDiscoverService();
 		return null;
 		
 	}
