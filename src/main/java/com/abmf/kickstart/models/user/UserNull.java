@@ -1,8 +1,11 @@
 package main.java.com.abmf.kickstart.models.user;
 
+import java.util.List;
+
 import main.java.com.abmf.kickstart.models.bankaccount.BankAccount;
 import main.java.com.abmf.kickstart.models.bankaccount.BankAccountNull;
 import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
+import main.java.com.abmf.kickstart.models.project.Project;
 
 public class UserNull extends User {
 	
@@ -90,6 +93,21 @@ public class UserNull extends User {
 
 	@Override
 	public void setCreditCard(CreditCard creditCard) {		
+	}
+
+	@Override
+	public List<Project> getAllProjects() {
+		return null;
+	}
+
+	@Override
+	public void addProject(Project project) {
+		
+	}
+
+	@Override
+	public void removeProjectByTitle(String title) {
+		
 	}
 
 }

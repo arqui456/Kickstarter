@@ -1,7 +1,11 @@
 package main.java.com.abmf.kickstart.models.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import main.java.com.abmf.kickstart.models.bankaccount.BankAccount;
 import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
+import main.java.com.abmf.kickstart.models.project.Project;
 
 public abstract class User implements Supporter {
 	
@@ -12,6 +16,7 @@ public abstract class User implements Supporter {
 	protected String biography;
 	protected String country;
 	protected CreditCard creditCard;
+	protected List<Project> projects = new ArrayList<>();
 	
 	public abstract CreditCard getCreditCard();
 
@@ -40,5 +45,11 @@ public abstract class User implements Supporter {
 	public abstract String getCountry();
 	
 	public abstract void setCountry(String country);
+	
+	public abstract List<Project> getAllProjects();
+	
+	public abstract void addProject(Project project);
+	
+	public abstract void removeProjectByTitle(String title);
 	
 }

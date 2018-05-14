@@ -14,7 +14,7 @@ public class ProjectsDiscoverService implements Service {
 	}
 	
 	public List<Project> getProjectsByCategory(Category category) {
-		List<Project> projects = new ArrayList<>();
+		ArrayList<Project> projects = new ArrayList<>();
 		for(Project project : KickStarterDeployer.kickStarterInstance.getProjects())
 			if(project.getCategory().equals(category))
 				projects.add(project);

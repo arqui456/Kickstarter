@@ -5,15 +5,13 @@ import java.util.List;
 
 import main.java.com.abmf.kickstart.models.comment.Comment;
 import main.java.com.abmf.kickstart.models.user.Supporter;
-import main.java.com.abmf.kickstart.models.user.User;
-import main.java.com.abmf.kickstart.models.user.UserImplemented;
 
 public class Project {
 
 	private String title;
 	private Category category;
 	private String description;
-	private User projectOwner;
+	private String projectOwner;
 	private long duration;	
 	private double desiredMoney;
 	private List<Comment> comments;
@@ -22,8 +20,8 @@ public class Project {
 	
 	public Project() {
 		title = "";
-		category = Category.UNDIFINED;
-		projectOwner = new UserImplemented();
+		category = Category.UNDEFINED;
+		projectOwner = "";
 		duration = 0;
 		desiredMoney = 0;
 		currentMoney = 0;
@@ -31,16 +29,20 @@ public class Project {
 		contribuitors = new ArrayList<>();
 	}
 	
-	public Project(String title, Category category,
-				   long duration, double desiredMoney, String description) {
+	public Project(String title, long duration, double desiredMoney, String description) {
 		this();
 		this.title = title;
-		this.category = category;
 		this.duration = duration;
 		this.desiredMoney = desiredMoney;
 		this.description = description;
 	}
-
+	
+	public Project(String title, Category category,
+			   long duration, double desiredMoney, String description) {
+		this(title, duration, desiredMoney, description);
+		this.category = category;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -65,11 +67,11 @@ public class Project {
 		this.description = description;
 	}
 
-	public User getProjectOwner() {
+	public String getProjectOwner() {
 		return projectOwner;
 	}
 
-	public void setProjectOwner(User projectOwner) {
+	public void setProjectOwner(String projectOwner) {
 		this.projectOwner = projectOwner;
 	}
 

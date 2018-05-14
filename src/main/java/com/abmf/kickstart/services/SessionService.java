@@ -1,11 +1,13 @@
 package main.java.com.abmf.kickstart.services;
 
-import java.awt.List;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import main.java.com.abmf.kickstart.models.comment.Comment;
 import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
+import main.java.com.abmf.kickstart.models.project.Category;
 import main.java.com.abmf.kickstart.models.project.Project;
+import main.java.com.abmf.kickstart.models.user.Supporter;
 import main.java.com.abmf.kickstart.models.user.User;
 import main.java.com.abmf.kickstart.view.KickStarterDeployer;
 
@@ -21,7 +23,6 @@ public class SessionService implements Service {
 		discoverService = (ProjectsDiscoverService) ServiceFactory.getInstance()
 						.getService(ServiceType.PROJECT_DISCOVER);
 		runSessionUI();
-		//scanner.close();
 	}
 	
 	private void runSessionUI() {
@@ -125,7 +126,161 @@ public class SessionService implements Service {
 	}
 	
 	private void myProjectsHandler() {
+		boolean isSeeingMyProjects = true;
+		while(isSeeingMyProjects) {
+			System.out.println("Type one option: ");
+			System.out.println("1. See my projects");
+			System.out.println("2. New project");
+			System.out.println("3. Back");
+			System.out.println(">>>");
+			
+			int input = -1;
+			try {
+				input = Integer.parseInt(scanner.nextLine());
+			} catch(Exception e) {
+				input = -1;
+			}
+			
+			switch(input) {
+				case 1:
+					seeMyProjects();
+					break;
+				case 2:
+					newProject();
+					break;
+				case 3: 
+					isSeeingMyProjects = false;
+					break;
+			}
+		}
+	}
+	
+	/*
+	 * private String title;
+	private Category category;
+	private String description;
+	private String projectOwner;
+	private long duration;	
+	private double desiredMoney;
+	private List<Comment> comments;
+	private List<Supporter> contribuitors;
+	private double currentMoney;*/
+	private void newProject() {
+		boolean isAddingProject = true;
+		while(isAddingProject) {
+			System.out.print("Type project name: ");
+			String name = scanner.nextLine();
+			System.out.print("Add a description: ");
+			String description = scanner.nextLine();
+			System.out.print("Type desired money: ");
+			double desiredMoney = Double.parseDouble(scanner.nextLine());
+			System.out.print("Type duration: ");
+			long duration = Long.parseLong(scanner.nextLine());
+			Project project = new Project(name, duration, desiredMoney, description);
+			System.out.println("Type the category: ");
+			System.out.println("1. ART");
+			System.out.println("2. COMMICS");
+			System.out.println("3. CRAFTS");
+			System.out.println("4. DANCE");
+			System.out.println("5. DESIGN");
+			System.out.println("6. FASHION");
+			System.out.println("7. FILM_AND_VIDEO");
+			System.out.println("8. FOOD");
+			System.out.println("9. GAMES");
+			System.out.println("10. JOURNALISM");
+			System.out.println("11. MUSIC");
+			System.out.println("12. PHOTOGRAPHY");
+			System.out.println("13. PUBLISHING");
+			System.out.println("14. TECHNOLOGY");
+			System.out.println("15. THEATER");
+			System.out.println("16. UNDEFINED");
+			System.out.print(">>>");
+			
+			int option = -1;
+			try {
+				option = Integer.parseInt(scanner.nextLine());
+			} catch(Exception e) {
+				System.out.println("PROCLEM");
+				option = -1;
+			}
+			
+			switch(option) {
+				case 1:
+					project.setCategory(Category.ART);
+					break;
+				case 2:
+					project.setCategory(Category.COMMICS);
+					break;
+				case 3:
+					project.setCategory(Category.CRAFTS);
+					break;
+				case 4:
+					project.setCategory(Category.DANCE);
+					break;
+				case 5:
+					project.setCategory(Category.DESIGN);
+					break;
+				case 6:
+					project.setCategory(Category.FASHION);
+					break;
+				case 7:
+					project.setCategory(Category.FILM_AND_VIDEO);
+					break;
+				case 8:
+					project.setCategory(Category.FOOD);
+					break;
+				case 9:
+					project.setCategory(Category.GAMES);
+					break;
+				case 10:
+					project.setCategory(Category.JOURNALISM);
+					break;
+				case 11:
+					project.setCategory(Category.MUSIC);
+					break;
+				case 12:
+					project.setCategory(Category.PHOTOGRAPHY);
+					break;
+				case 13:
+					project.setCategory(Category.PUBLISHING);
+					break;
+				case 14:
+					project.setCategory(Category.TECHNOLOGY);
+					break;
+				case 15:
+					project.setCategory(Category.THEATER);
+					break;
+				default:
+					project.setCategory(Category.UNDEFINED);
+					break;
+			}
+			
+			user.addProject(project);
+			isAddingProject = false;
+		}
 		
+	}
+	
+	private void seeMyProjects() {
+		if(!user.getAllProjects().isEmpty()) {
+			for(Project project : user.getAllProjects()) 
+				System.out.println(getProjectDescription(project));
+
+			System.out.println("------------------------------------");
+			System.out.println("Press any key to get back");
+			scanner.nextLine();
+		} else {
+			System.out.println("User has no projects");
+		}
+	}
+
+	public String getProjectDescription(Project project) {
+		StringBuilder state = new StringBuilder();
+		state.append(String.format("Title: %s", project.getTitle()));
+		state.append(String.format("\nDescription: %s", project.getDescription()));
+		state.append(String.format("\nDesired Money: %f", project.getDesiredMoney()));
+		state.append(String.format("\nCurrent money: %f", project.getCurrentMoney()));
+		return state.toString();
 	}
 	
 	private boolean eraseAccount() {

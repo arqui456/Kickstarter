@@ -1,13 +1,16 @@
 package main.java.com.abmf.kickstart.models.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import main.java.com.abmf.kickstart.models.bankaccount.BankAccount;
-import main.java.com.abmf.kickstart.models.bankaccount.BankAccountImplemented;
 import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
+import main.java.com.abmf.kickstart.models.project.Project;
 
 public class UserImplemented extends User {
 	
 	private double donationValue;
-
+	
 	public UserImplemented() {
 		name = "";
 		email = "";
@@ -15,6 +18,7 @@ public class UserImplemented extends User {
 		bankAccount = null;
 		biography = "";
 		country = "";
+		projects = new ArrayList<>();
 	}
 	
 	public UserImplemented(String name, String email, String password) {
@@ -30,6 +34,22 @@ public class UserImplemented extends User {
 		this.bankAccount = bankAccount;
 		this.biography = biography;
 		this.country = country;
+	}
+	
+	public void addProject(Project project) {
+		projects.add(project);
+	}
+	
+	public void removeProjectByTitle(String title) {
+		for(Project project : projects) 
+			if(project.getTitle().equals(title)) {
+				projects.remove(project);
+				return;
+			}
+	}
+	
+	public List<Project> getAllProjects() {
+		return projects;
 	}
 	
 	@Override
