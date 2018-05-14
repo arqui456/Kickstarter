@@ -11,18 +11,15 @@ import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
 import main.java.com.abmf.kickstart.models.user.User;
 import main.java.com.abmf.kickstart.models.user.UserImplemented;
 import main.java.com.abmf.kickstart.models.user.UserNull;
+import main.java.com.abmf.kickstart.services.AuthService;
+import main.java.com.abmf.kickstart.services.ProjectsDiscoverService;
+import main.java.com.abmf.kickstart.services.ServiceFactory;
+import main.java.com.abmf.kickstart.services.ServiceType;
+import main.java.com.abmf.kickstart.services.SessionService;
 import main.java.com.abmf.kickstart.view.KickStarterDeployer;
 
-public class UserTest {
+public class UnitTests {
 
-	@Test
-	public void userInstantionShouldWork() {
-		User user = new UserImplemented("Aurelio", "abmf", "123", null, "va", "vaca");
-		assert(user != null);
-		User nullUser = new UserNull();
-		assert(user != null);
-	}
-	
 	@Test
 	public void shouldCreateCreditCard() {
 		CreditCard card = new CreditCard.Builder().withCardNumber("0001111322022")
@@ -35,11 +32,41 @@ public class UserTest {
 	}
 
 	@Test
+	public void shouldCreateDiscoverServiceInstance() {
+		ProjectsDiscoverService discoverService = (ProjectsDiscoverService) ServiceFactory.getInstance()
+																	.getService(ServiceType.PROJECT_DISCOVER);
+		assert(discoverService != null);
+	}
+	
+	@Test
+	public void shouldCreateSessionServiceInstance() {
+		SessionService sessionService = (SessionService) ServiceFactory.getInstance()
+																	.getService(ServiceType.SESSION);
+		assert(sessionService != null);
+	}
+	
+	@Test
+	public void shouldCreateAuthServiceInstance() {
+		AuthService authService = (AuthService) ServiceFactory.getInstance()
+															.getService(ServiceType.AUTH);
+		assert(authService != null);
+	}
+	
+	@Test
 	public void shouldCreateKickStarterApp() {
 		KickStarterDeployer instance = KickStarterDeployer.getInstance();
 		assert(instance != null);
 	}
+
 	
+	@Test
+	public void userInstantionShouldWork() {
+		User user = new UserImplemented("Aurelio", "abmf", "123", null, "va", "vaca");
+		assert(user != null);
+		User nullUser = new UserNull();
+		assert(user != null);
+	}
+		
 	@Test
 	public void shouldCreateCommnetsUsing() {
 		Comment commnet = new CommentNull();
