@@ -90,12 +90,17 @@ public class SessionService implements Service {
 				case 1:
 					showAllProjectsHandler();
 					break;
+				case 2:
+					seeProjectsWithFilter();
+					break;
 				case 3:
 					isOnProjects = false;
 					break;
 			}
 		}
 	}
+	
+	private void seeProjectsWithFilter() {}
 	
 	private void showAllProjectsHandler() {
 		if(discoverService.getAllProjects().size() > 0) {
@@ -112,10 +117,10 @@ public class SessionService implements Service {
 				input = -1;
 			}
 			
-			
-			
 		} else {
 			System.out.println("There are no projects publishied yet.");
+			System.out.println("Press any key to get back");
+			scanner.nextLine();
 		}
 		
 	}
@@ -155,16 +160,6 @@ public class SessionService implements Service {
 		}
 	}
 	
-	/*
-	 * private String title;
-	private Category category;
-	private String description;
-	private String projectOwner;
-	private long duration;	
-	private double desiredMoney;
-	private List<Comment> comments;
-	private List<Supporter> contribuitors;
-	private double currentMoney;*/
 	private void newProject() {
 		boolean isAddingProject = true;
 		while(isAddingProject) {
@@ -255,7 +250,9 @@ public class SessionService implements Service {
 					break;
 			}
 			
+			project.setProjectOwner(user.getEmail());
 			user.addProject(project);
+			KickStarterDeployer.kickStarterInstance.addProject(project);
 			isAddingProject = false;
 		}
 		
@@ -271,6 +268,8 @@ public class SessionService implements Service {
 			scanner.nextLine();
 		} else {
 			System.out.println("User has no projects");
+			System.out.println("Press any key to get back");
+			scanner.nextLine();
 		}
 	}
 
