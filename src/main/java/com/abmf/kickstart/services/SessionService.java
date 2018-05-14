@@ -1,13 +1,10 @@
 package main.java.com.abmf.kickstart.services;
 
-import java.util.List;
 import java.util.Scanner;
 
-import main.java.com.abmf.kickstart.models.comment.Comment;
 import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
 import main.java.com.abmf.kickstart.models.project.Category;
 import main.java.com.abmf.kickstart.models.project.Project;
-import main.java.com.abmf.kickstart.models.user.Supporter;
 import main.java.com.abmf.kickstart.models.user.User;
 import main.java.com.abmf.kickstart.view.KickStarterDeployer;
 
@@ -76,8 +73,7 @@ public class SessionService implements Service {
 		while(isOnProjects) {
 			System.out.println("Type one option:");
 			System.out.println("1. See all projects");
-			System.out.println("2. See project with filter");
-			System.out.println("3. Get back");
+			System.out.println("2. Get back");
 			
 			int input = -1;
 			try {
@@ -91,16 +87,11 @@ public class SessionService implements Service {
 					showAllProjectsHandler();
 					break;
 				case 2:
-					seeProjectsWithFilter();
-					break;
-				case 3:
 					isOnProjects = false;
 					break;
 			}
 		}
 	}
-	
-	private void seeProjectsWithFilter() {}
 	
 	private void showAllProjectsHandler() {
 		if(discoverService.getAllProjects().size() > 0) {
