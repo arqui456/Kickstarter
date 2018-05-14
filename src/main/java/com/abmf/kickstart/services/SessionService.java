@@ -1,5 +1,6 @@
 package main.java.com.abmf.kickstart.services;
 
+import java.util.List;
 import java.util.Scanner;
 
 import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
@@ -94,11 +95,12 @@ public class SessionService implements Service {
 	}
 	
 	private void showAllProjectsHandler() {
-		if(discoverService.getAllProjects().size() > 0) {
+		List<Project> projects = KickStarterDeployer.kickStarterInstance.getProjects();
+		if(projects.size() > 0){
 			System.out.println("Type project id to see more: ");
 			int id = 0;
-			for(Project project : discoverService.getAllProjects())
-				System.out.println(projectStringModal(project, id++));
+			for(Project project : projects)
+				System.out.println(getProjectDescription(project));
 			
 			System.out.print(">>>");
 			int input = -1;
@@ -107,8 +109,7 @@ public class SessionService implements Service {
 			} catch(Exception e) {
 				input = -1;
 			}
-			
-		} else {
+		}else {
 			System.out.println("There are no projects publishied yet.");
 			System.out.println("Press any key to get back");
 			scanner.nextLine();
