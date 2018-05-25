@@ -12,66 +12,48 @@ public class BankAccountNull extends BankAccount {
 	
 	@Override
 	public String getBankName() {
-		// TODO Auto-generated method stub
-		return "";
+		return bankName;
 	}
 
 	@Override
-	public void setBankName(String bankName) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void setBankName(String bankName) {}
 
 	@Override
 	public String getUserName() {
-		// TODO Auto-generated method stub
-		return "";
+		return userName;
 	}
 
 	@Override
-	public void setUserName(String userName) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void setUserName(String userName) {}
 
 	@Override
 	public double getTotalQuantity() {
-		return 0;
+		return totalQuantity;
 	}
 
 	@Override
-	public void setTotalQuantity(double totalQuantity) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void setTotalQuantity(double totalQuantity) {}
 
 	@Override
 	public long getId() {
-		return 0;
+		return id;
 	}
 
 	@Override
-	public void setId(long id) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void setId(long id) {}
 
 	@Override
 	public String getLocalization() {
 		return localization;
 	}
+	
+	@Override
+	public void setLocalization(String localization) {}
 
 	@Override
 	public String toString() {
 		return "BankAccountNull [bankName=" + bankName + ", userName=" + userName + ", totalQuantity=" + totalQuantity
 				+ ", id=" + id + ", localization=" + localization + "]";
 	}
-
-	@Override
-	public void setLocalization(String localization) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	
 }

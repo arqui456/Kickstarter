@@ -59,8 +59,7 @@ public class UserImplemented extends User {
 
 	@Override
 	public void setName(String name) {
-		this.name = name;
-		
+		this.name = name;		
 	}
 
 	@Override
