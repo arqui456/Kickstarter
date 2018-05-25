@@ -12,12 +12,12 @@ public class ServiceFactory {
 		return INSTANCE;
 	}
 	
-	public Service getService(ServiceType serviceType) {
-		if(serviceType == ServiceType.AUTH)
+	public Service getService(Object serviceType) {
+		if(serviceType instanceof AuthService )
 			return new AuthService();
-		if(serviceType == ServiceType.SESSION)
+		if(serviceType instanceof SessionService)
 			return new SessionService();
-		if(serviceType == ServiceType.PROJECT_DISCOVER)
+		if(serviceType instanceof ProjectsDiscoverService)
 			return new ProjectsDiscoverService();
 		return null;
 		

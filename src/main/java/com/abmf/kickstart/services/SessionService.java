@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
+import main.java.com.abmf.kickstart.models.creditcard.CreditCardImplemented;
 import main.java.com.abmf.kickstart.models.project.Category;
 import main.java.com.abmf.kickstart.models.project.Project;
 import main.java.com.abmf.kickstart.models.user.User;
@@ -19,7 +20,7 @@ public class SessionService implements Service {
 		this.user = user;
 		scanner = new Scanner(System.in);
 		discoverService = (ProjectsDiscoverService) ServiceFactory.getInstance()
-						.getService(ServiceType.PROJECT_DISCOVER);
+						.getService(new ProjectsDiscoverService());
 		runSessionUI();
 	}
 	
@@ -343,7 +344,7 @@ public class SessionService implements Service {
 			
 			switch(input) {
 				case 1: 
-					System.out.println(getCreditCardState(user.getCreditCard()));
+					System.out.println(getCreditCardState((CreditCardImplemented) user.getCreditCard()));
 					break;
 				case 2:
 					addCreditCardHandler();
@@ -383,7 +384,7 @@ public class SessionService implements Service {
 				System.out.print("Type secury code: ");
 				String securyCode = scanner.nextLine();
 				
-				CreditCard card = new CreditCard.Builder()
+				CreditCard card = new CreditCardImplemented.Builder()
 												.withCardHolder(name)
 												.withCardNumber(cardNumber)
 												.withExpirationDate(expirationDate)
@@ -397,7 +398,7 @@ public class SessionService implements Service {
 		}
 	}
 	
-	private String getCreditCardState(CreditCard creditCard) {
+	private String getCreditCardState(CreditCardImplemented creditCard) {
 		String toReturn = "User has no credit card associated.";
 		if(creditCard != null) {
 			StringBuilder builder = new StringBuilder();

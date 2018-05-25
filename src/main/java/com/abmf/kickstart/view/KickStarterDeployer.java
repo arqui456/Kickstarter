@@ -7,7 +7,6 @@ import main.java.com.abmf.kickstart.models.user.User;
 import main.java.com.abmf.kickstart.models.user.UserImplemented;
 import main.java.com.abmf.kickstart.services.AuthService;
 import main.java.com.abmf.kickstart.services.ServiceFactory;
-import main.java.com.abmf.kickstart.services.ServiceType;
 import main.java.com.abmf.kickstart.services.SessionService;
 
 public class KickStarterDeployer {
@@ -23,10 +22,10 @@ public class KickStarterDeployer {
 		scanner = new Scanner(System.in);
 		kickStarterInstance = new KickStarter();
 		authService = (AuthService) ServiceFactory.getInstance()
-				.getService(ServiceType.AUTH);
+				.getService(new AuthService());
 		
 		sessionService = (SessionService) ServiceFactory.getInstance()
-				.getService(ServiceType.SESSION);
+				.getService(new SessionService());
 	}
 	
 	public static KickStarterDeployer getInstance() {

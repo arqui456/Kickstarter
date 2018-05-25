@@ -5,6 +5,7 @@ import java.util.List;
 
 import main.java.com.abmf.kickstart.models.bankaccount.BankAccount;
 import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
+import main.java.com.abmf.kickstart.models.creditcard.CreditCardImplemented;
 import main.java.com.abmf.kickstart.models.project.Project;
 
 public abstract class User implements Supporter {

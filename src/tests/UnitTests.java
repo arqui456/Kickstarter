@@ -7,14 +7,13 @@ import org.junit.Test;
 import main.java.com.abmf.kickstart.models.comment.Comment;
 import main.java.com.abmf.kickstart.models.comment.CommentImplemented;
 import main.java.com.abmf.kickstart.models.comment.CommentNull;
-import main.java.com.abmf.kickstart.models.creditcard.CreditCard;
+import main.java.com.abmf.kickstart.models.creditcard.CreditCardImplemented;
 import main.java.com.abmf.kickstart.models.user.User;
 import main.java.com.abmf.kickstart.models.user.UserImplemented;
 import main.java.com.abmf.kickstart.models.user.UserNull;
 import main.java.com.abmf.kickstart.services.AuthService;
 import main.java.com.abmf.kickstart.services.ProjectsDiscoverService;
 import main.java.com.abmf.kickstart.services.ServiceFactory;
-import main.java.com.abmf.kickstart.services.ServiceType;
 import main.java.com.abmf.kickstart.services.SessionService;
 import main.java.com.abmf.kickstart.view.KickStarterDeployer;
 
@@ -22,7 +21,7 @@ public class UnitTests {
 
 	@Test
 	public void shouldCreateCreditCard() {
-		CreditCard card = new CreditCard.Builder().withCardNumber("0001111322022")
+		CreditCardImplemented card = new CreditCardImplemented.Builder().withCardNumber("0001111322022")
 											      .withCardHolder("Aurelio B Miranda")
 												  .withExpirationDate("21/21")
 												  .withSecurityCode("505")
@@ -34,21 +33,21 @@ public class UnitTests {
 	@Test
 	public void shouldCreateDiscoverServiceInstance() {
 		ProjectsDiscoverService discoverService = (ProjectsDiscoverService) ServiceFactory.getInstance()
-																	.getService(ServiceType.PROJECT_DISCOVER);
+																	.getService(new ProjectsDiscoverService());
 		assert(discoverService != null);
 	}
 	
 	@Test
 	public void shouldCreateSessionServiceInstance() {
 		SessionService sessionService = (SessionService) ServiceFactory.getInstance()
-																	.getService(ServiceType.SESSION);
+																	.getService(new SessionService());
 		assert(sessionService != null);
 	}
 	
 	@Test
 	public void shouldCreateAuthServiceInstance() {
 		AuthService authService = (AuthService) ServiceFactory.getInstance()
-															.getService(ServiceType.AUTH);
+															.getService(new AuthService());
 		assert(authService != null);
 	}
 	
