@@ -55,8 +55,8 @@ public class Project {
 		return category;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategory(int category) {
+		this.category.setCategory(category);;
 	}
 
 	public String getDescription() {

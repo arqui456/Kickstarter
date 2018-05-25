@@ -188,60 +188,15 @@ public class SessionService implements Service {
 			try {
 				option = Integer.parseInt(scanner.nextLine());
 			} catch(Exception e) {
-				System.out.println("PROCLEM");
-				option = -1;
+				System.out.println("Exception");
+				option = 16;
 			}
 			
-			switch(option) {
-				case 1:
-					project.setCategory(Category.ART);
-					break;
-				case 2:
-					project.setCategory(Category.COMMICS);
-					break;
-				case 3:
-					project.setCategory(Category.CRAFTS);
-					break;
-				case 4:
-					project.setCategory(Category.DANCE);
-					break;
-				case 5:
-					project.setCategory(Category.DESIGN);
-					break;
-				case 6:
-					project.setCategory(Category.FASHION);
-					break;
-				case 7:
-					project.setCategory(Category.FILM_AND_VIDEO);
-					break;
-				case 8:
-					project.setCategory(Category.FOOD);
-					break;
-				case 9:
-					project.setCategory(Category.GAMES);
-					break;
-				case 10:
-					project.setCategory(Category.JOURNALISM);
-					break;
-				case 11:
-					project.setCategory(Category.MUSIC);
-					break;
-				case 12:
-					project.setCategory(Category.PHOTOGRAPHY);
-					break;
-				case 13:
-					project.setCategory(Category.PUBLISHING);
-					break;
-				case 14:
-					project.setCategory(Category.TECHNOLOGY);
-					break;
-				case 15:
-					project.setCategory(Category.THEATER);
-					break;
-				default:
-					project.setCategory(Category.UNDEFINED);
-					break;
+			while(option < 1 && option > 16) {
+				System.out.println("Invalid value! Try again: ");
+				option = scanner.nextInt();
 			}
+			project.setCategory(option);
 			
 			project.setProjectOwner(user.getEmail());
 			user.addProject(project);
